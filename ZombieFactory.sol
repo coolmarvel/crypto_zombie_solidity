@@ -1,6 +1,6 @@
 pragma solidity ^0.4.19;
 
-contract ZombieFactory {
+contract zombiefactory {
 
     event NewZombie(uint zombieId, string name, uint dna);
 
