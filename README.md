@@ -2,4 +2,4 @@
 
 크립트좀비 (https://cryptozombies.io/ko/course) 로 입문하는 솔리디티
 
-solidity, ethereum, remix, gas
+solidity, ethereum, remix, gas, pro
