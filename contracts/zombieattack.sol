@@ -1,6 +1,8 @@
+pragma solidity ^0.4.19;
+
 import "./zombiehelper.sol";
 
-contract ZombieBattle is ZombieHelper {
+contract ZombieAttack is ZombieHelper {
     uint256 randNonce = 0;
     uint256 attackVictoryProbability = 70;
 
@@ -11,7 +13,7 @@ contract ZombieBattle is ZombieHelper {
 
     function attack(uint256 _zombieId, uint256 _targetId)
         external
-        ownerOf(_zombieId)
+        onlyOwnerOf(_zombieId)
     {
         Zombie storage myZombie = zombies[_zombieId];
         Zombie storage enemyZombie = zombies[_targetId];
@@ -24,7 +26,7 @@ contract ZombieBattle is ZombieHelper {
         } else {
             myZombie.lossCount++;
             enemyZombie.winCount++;
+            _triggerCooldown(myZombie);
         }
-        _triggerCooldown(myZombie);
     }
 }
