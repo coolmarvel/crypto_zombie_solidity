@@ -1,5 +1,5 @@
-const Lec1 = artifacts.require("Lec1");
+const Lec14 = artifacts.require("Lec14");
 
 module.exports = function (deployer) {
-  deployer.deploy(Lec1);
+  deployer.deploy(Lec14);
 };
