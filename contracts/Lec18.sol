@@ -26,7 +26,7 @@ contract Lec18 {
         ageArray.pop();
     }
 
-    function agePop(uint256 _index) public {
+    function ageDelete(uint256 _index) public {
         delete ageArray[_index];
     }
 }
