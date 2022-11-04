@@ -11,7 +11,7 @@ contract Lec25 {
      * require : 특정 조건에 부합하지 않으면(false) 에러 발생, gas 환불
      */
 
-    // 21254 gas
+    // 300000 gas
     function assertNow() public pure {
         assert(false); // test
     }
