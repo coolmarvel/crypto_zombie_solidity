@@ -46,17 +46,17 @@ contract Math {
         pure
         returns (uint256)
     {
-        require(_num1 < 10, "num1 should not be more than 10");
-        return _num1 / _num2;
+        require(_num1 < 10, "num1 shoud not be more than 10");
+        return _num1 / _num2; // 6/3 => 2
     }
 }
 
 contract Runner {
     event catchErr(string _name, string _err);
-    event catchPanic(string _name, string _err);
-    event catchLowLevelErr(string _nme, bytes _err);
+    event catchPanic(string _name, uint256 _err);
+    event catchLowLevelErr(string _name, bytes _err);
 
-    Math public mathInstance = new Math();
+    math public mathInstance = new math();
 
     function playTryCatch(uint256 _num1, uint256 _num2)
         public
@@ -67,11 +67,11 @@ contract Runner {
         } catch Error(string memory _err) {
             emit catchErr("revert/require", _err);
             return (0, false);
-        } catch Panic(uint256 _err) {
-            emit catchPanic("assertError/Panic", _err);
+        } catch Panic(uint256 _errorCode) {
+            emit catchPanic("assertError/Panic", _errorCode);
             return (0, false);
-        } catch (bytes memory _err) {
-            emit catchLowLevelErr("LowlevelError", _err);
+        } catch (bytes memory _errorCode) {
+            emit catchLowLevelErr("LowlevelError", _errorCode);
             return (0, false);
         }
     }
