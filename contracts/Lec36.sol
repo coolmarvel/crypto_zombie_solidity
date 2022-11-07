@@ -57,4 +57,12 @@ contract Caller {
         require(success, "Failed to transfer ether");
         emit calledFunction(success, outputFromCalledFunction);
     }
+
+    function callMethod2(address _contractAddress) public payable {
+        (bool success, bytes memory outputFromCalledFunction) = _contractAddress
+            .call{value: msg.value}(abi.encodeWithSignature("Nothing()"));
+
+        require(success, "failed to transfer ether");
+        emit calledFunction(success, outputFromCalledFunction);
+    }
 }
